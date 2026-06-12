@@ -2,6 +2,13 @@
 
 An end-to-end machine learning project that classifies SMS messages as `spam` or `ham` using TF-IDF text features and multiple supervised learning models.
 
+![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Jupyter Notebook](https://img.shields.io/badge/Jupyter-Notebook-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-Visualization-11557C?style=for-the-badge)
+![Scikit-learn](https://img.shields.io/badge/Scikit--learn-ML%20Modeling-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+
 This updated version makes the project portable, reproducible, and easier to present. It now includes:
 
 - a local dataset inside the repository
@@ -139,4 +146,6 @@ The notebook file `SPAM SMS DETECTION.ipynb` can be used for interactive explora
 ## Author
 
 Nadeem Ahamad
+
+Machine Learning project focused on SMS spam detection, message classification, spam pattern analysis, and model evaluation using Python by CodSoft Internship Project.
 
