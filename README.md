@@ -1,50 +1,142 @@
-# SMS-Spam-Detection
+# SMS Spam Detection
 
-This project SMS Spam Detection involves building an AI model to classify SMS messages as spam or legitimate. Using techniques like TF-IDF or word embeddings and classifiers such as Naive Bayes, Logistic Regression, or Support Vector Machines, this project aims to accurately identify and filter out unwanted spam messages.
+An end-to-end machine learning project that classifies SMS messages as `spam` or `ham` using TF-IDF text features and multiple supervised learning models.
 
-## Project Overview
+This updated version makes the project portable, reproducible, and easier to present. It now includes:
 
-The SMS Spam Detection project focuses on developing an AI model to classify SMS messages as either spam or legitimate. By leveraging advanced text processing and machine learning techniques, the project aims to create a robust spam filter capable of accurately identifying unwanted messages. The model uses feature extraction methods like TF-IDF and word embeddings, alongside classifiers such as Naive Bayes, Logistic Regression, and Support Vector Machines (SVM).
+- a local dataset inside the repository
+- a reusable training script
+- automatic model comparison
+- saved evaluation metrics and confusion matrix
+- a simple prediction script
+- a cleaner notebook workflow
 
-## Key Features
+## Project Highlights
 
-**1. Data Preprocessing**: Includes cleaning SMS text data, tokenization, and handling inconsistencies.
-  
-**2. Feature Extraction**:
-  - **TF-IDF**: Converts text into numerical features reflecting word importance.
-    
-  - **Word Embeddings**: Provides dense vector representations of words, capturing semantic meanings.
-    
-  **3. Classification Models**:
-  - **Naive Bayes**: Probabilistic model based on Bayes' theorem with feature independence assumptions.
-    
-  - **Logistic Regression**: Linear model predicting the probability of a message being spam.
-    
-  - **Support Vector Machines (SVM)**: Finds the optimal hyperplane to separate spam from legitimate messages.
-    
-  **4. Model Evaluation**: Metrics including accuracy, precision, recall, and F1-score to assess model performance.
+- Cleans and preprocesses SMS text data
+- Compares `MultinomialNB`, `LogisticRegression`, and `LinearSVC`
+- Uses cross-validation to choose the best model
+- Saves the trained model with `joblib`
+- Generates evaluation reports for easier analysis
 
-## Technologies Used
+## Dataset
 
-**1. Programming Language**: Python 3.x
+The project uses the SMS Spam Collection dataset.
 
-**2. Libraries**:
-  - **Scikit-learn**: For machine learning algorithms and model evaluation.
+- Source: [Kaggle - SMS Spam Collection Dataset](https://www.kaggle.com/datasets/uciml/sms-spam-collection-dataset)
+- Local path used by this repo: `data/raw/spam.csv`
 
-  - **Numpy**: For numerical operations and data manipulation.
-    
-  - **Pandas**: For data handling and preprocessing.
-    
-  - **Matplotlib**: For visualizing results and performance metrics.
-    
-**2. Tools**: 
-  - **Jupyter Notebook** (optional): For interactive coding and experimentation.
-    
-  - **Git**: For version control and collaboration.
+## Tech Stack
 
-## Conclusion
+- Python
+- Pandas
+- Scikit-learn
+- Matplotlib
+- Seaborn
+- Jupyter Notebook
 
-The SMS Spam Detection project demonstrates the effective use of machine learning techniques to address the problem of spam filtering in SMS messages. By employing various feature extraction methods and classification algorithms, the project aims to provide a reliable solution for distinguishing between spam and legitimate messages. Future improvements could involve incorporating more advanced models, optimizing feature extraction, and expanding the dataset for better performance.
+## Project Structure
 
-Feel free to explore the repository, try out the models, and contribute to the project!
+```text
+SMS-Spam-Detection/
+|-- data/
+|   `-- raw/
+|       `-- spam.csv
+|-- reports/
+|   `-- metrics.json
+|   `-- confusion_matrix.png
+|-- models/
+|   `-- spam_classifier.joblib
+|-- predict.py
+|-- train.py
+|-- SPAM SMS DETECTION.ipynb
+|-- requirements.txt
+`-- README.md
+```
+
+## Installation
+
+```bash
+git clone https://github.com/nadeemahamad007/SMS-Spam-Detection.git
+cd SMS-Spam-Detection
+pip install -r requirements.txt
+```
+
+## Train the Model
+
+Run the training pipeline:
+
+```bash
+python train.py
+```
+
+You can also provide a custom dataset path:
+
+```bash
+python train.py --data data/raw/spam.csv
+```
+
+This will:
+
+- preprocess the dataset
+- compare multiple models using cross-validation
+- save the best model to `models/spam_classifier.joblib`
+- save metrics to `reports/metrics.json`
+- save the confusion matrix to `reports/confusion_matrix.png`
+
+## Predict a New Message
+
+After training, classify a new SMS message:
+
+```bash
+python predict.py "Congratulations! You have won a free ticket. Call now!"
+```
+
+Expected output:
+
+```text
+spam
+```
+
+## Model Workflow
+
+1. Load the SMS dataset
+2. Keep only the label and message columns
+3. Clean the message text
+4. Convert text into TF-IDF features
+5. Train and compare multiple classifiers
+6. Select the best model based on F1 score
+7. Evaluate on a held-out test set
+
+## Current Results
+
+After running `python train.py` on the included dataset, the best-performing model was `LinearSVC`.
+
+| Metric | Score |
+|--------|-------|
+| Accuracy | 98.74% |
+| Precision | 98.56% |
+| Recall | 91.95% |
+| F1 Score | 95.14% |
+
+Cross-validation F1 score comparison:
+
+- `MultinomialNB`: 0.8736
+- `LogisticRegression`: 0.9280
+- `LinearSVC`: 0.9362
+
+## Notebook
+
+The notebook file `SPAM SMS DETECTION.ipynb` can be used for interactive exploration and demonstration. The main production workflow is now available in `train.py` and `predict.py`, which makes the project easier to run on any machine.
+
+## Future Improvements
+
+- deploy the model with Flask or Streamlit
+- add hyperparameter tuning with GridSearchCV
+- expose a web form for live spam prediction
+- track experiments with MLflow
+
+## Author
+
+Nadeem Ahamad
 
